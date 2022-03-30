@@ -17,6 +17,9 @@
 		EC14F20A27F4FDBE00C2AF2A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F20927F4FDBE00C2AF2A /* LoginViewController.swift */; };
 		EC14F20E27F517CF00C2AF2A /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F20C27F517CF00C2AF2A /* ActivityCollectionViewCell.swift */; };
 		EC14F20F27F517CF00C2AF2A /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC14F20D27F517CF00C2AF2A /* ActivityCollectionViewCell.xib */; };
+		EC14F21127F51F9700C2AF2A /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F21027F51F9700C2AF2A /* ActivityDetailViewController.swift */; };
+		EC14F21427F5224200C2AF2A /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F21327F5224200C2AF2A /* Activity.swift */; };
+		EC14F21727F522F600C2AF2A /* FakeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F21627F522F600C2AF2A /* FakeDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		EC14F20927F4FDBE00C2AF2A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EC14F20C27F517CF00C2AF2A /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC14F20D27F517CF00C2AF2A /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC14F21027F51F9700C2AF2A /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
+		EC14F21327F5224200C2AF2A /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		EC14F21627F522F600C2AF2A /* FakeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,8 @@
 		EC14F1ED27F3E73300C2AF2A /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				EC14F21527F522E900C2AF2A /* Database */,
+				EC14F21227F5223A00C2AF2A /* Model */,
 				EC14F20B27F517B000C2AF2A /* View */,
 				EC14F20227F4FBE300C2AF2A /* ViewController */,
 				EC14F1EE27F3E73300C2AF2A /* AppDelegate.swift */,
@@ -82,6 +90,7 @@
 				EC14F20927F4FDBE00C2AF2A /* LoginViewController.swift */,
 				EC14F20527F4FC3000C2AF2A /* ActivitiesViewController.swift */,
 				EC14F20727F4FC3B00C2AF2A /* PurchaseTicketViewController.swift */,
+				EC14F21027F51F9700C2AF2A /* ActivityDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -93,6 +102,22 @@
 				EC14F20D27F517CF00C2AF2A /* ActivityCollectionViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EC14F21227F5223A00C2AF2A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC14F21327F5224200C2AF2A /* Activity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC14F21527F522E900C2AF2A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				EC14F21627F522F600C2AF2A /* FakeDatabase.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,9 +194,12 @@
 			files = (
 				EC14F20A27F4FDBE00C2AF2A /* LoginViewController.swift in Sources */,
 				EC14F20627F4FC3000C2AF2A /* ActivitiesViewController.swift in Sources */,
+				EC14F21127F51F9700C2AF2A /* ActivityDetailViewController.swift in Sources */,
+				EC14F21727F522F600C2AF2A /* FakeDatabase.swift in Sources */,
 				EC14F20E27F517CF00C2AF2A /* ActivityCollectionViewCell.swift in Sources */,
 				EC14F20827F4FC3B00C2AF2A /* PurchaseTicketViewController.swift in Sources */,
 				EC14F1EF27F3E73300C2AF2A /* AppDelegate.swift in Sources */,
+				EC14F21427F5224200C2AF2A /* Activity.swift in Sources */,
 				EC14F1F127F3E73300C2AF2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

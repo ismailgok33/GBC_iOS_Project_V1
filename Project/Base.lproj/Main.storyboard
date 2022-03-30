@@ -104,6 +104,21 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="1585.7142857142856"/>
         </scene>
+        <!--Activity Detail View Controller-->
+        <scene sceneID="ui2-Mh-TbK">
+            <objects>
+                <viewController storyboardIdentifier="ActivityDetailVC" id="tvb-kg-i5S" customClass="ActivityDetailViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="erO-5c-XgI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="A2I-sP-M3f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kp1-Py-TvW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10" y="2259"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="r33-7B-cmT">
             <objects>
@@ -132,6 +147,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DXB-6a-ivr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemGray3Color"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
