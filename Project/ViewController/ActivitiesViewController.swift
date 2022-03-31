@@ -37,7 +37,8 @@ class ActivitiesViewController: UIViewController {
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 2
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
         collectionView.collectionViewLayout = layout
 
@@ -61,6 +62,14 @@ extension ActivitiesViewController: UICollectionViewDelegate, UICollectionViewDa
         
         cell.configureUI(activity: activities[indexPath.row])
         
+        cell.layer.cornerRadius = 10.0
+        cell.layer.borderWidth = 0.0
+        cell.layer.shadowColor = UIColor.darkGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOpacity = 1
+        cell.layer.masksToBounds = false //<-
+        
         return cell
     }
     
@@ -83,6 +92,6 @@ extension ActivitiesViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension ActivitiesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width / 2) - 40, height: (UIScreen.main.bounds.width / 2) - 40)
+        return CGSize(width: (UIScreen.main.bounds.width / 2) - 20, height: (UIScreen.main.bounds.width / 2) - 20)
     }
 }

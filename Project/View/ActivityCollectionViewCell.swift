@@ -12,6 +12,8 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "activityCell"
     
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var price: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +26,8 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     
     func configureUI(activity: Activity) {
         self.imageView.image = activity.photo
+        self.name.text = activity.name
+        self.price.text = activity.price
     }
 
 }
