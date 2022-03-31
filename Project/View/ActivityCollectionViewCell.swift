@@ -21,5 +21,9 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "ActivityCollectionViewCell", bundle: nil)
     }
+    
+    func configureUI(activity: Activity) {
+        self.imageView.image = activity.photo
+    }
 
 }

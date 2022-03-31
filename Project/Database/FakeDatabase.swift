@@ -20,4 +20,8 @@ class FakeDatabase {
         Activity(name: "French Pastry Tour", price: "$100 / person", photo: UIImage(systemName: "character.book.closed")!),
         Activity(name: "Cabaret Show", price: "$85 / person", photo: UIImage(systemName: "bookmark")!)
     ]
+    
+    func getAllActivities() -> [Activity] {
+        return activityList
+    }
 }

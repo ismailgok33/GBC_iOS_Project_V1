@@ -12,6 +12,8 @@ class ActivitiesViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet var collectionView: UICollectionView!
+    
+    var activities: [Activity] = []
 
     // MARK: - Lifecycle
     
@@ -19,6 +21,8 @@ class ActivitiesViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.title = "Things to do in Paris"
+        
+        fetchAllActivities()
         
         configureCollectionView()
     }
@@ -38,6 +42,10 @@ class ActivitiesViewController: UIViewController {
         collectionView.collectionViewLayout = layout
 
     }
+    
+    func fetchAllActivities() {
+        self.activities = FakeDatabase.shared.getAllActivities()
+    }
 
 }
 
@@ -45,13 +53,13 @@ class ActivitiesViewController: UIViewController {
 
 extension ActivitiesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return activities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityCollectionViewCell.reuseIdentifier, for: indexPath) as! ActivityCollectionViewCell
         
-        cell.imageView = UIImageView(image: UIImage(systemName: "book"))
+        cell.configureUI(activity: activities[indexPath.row])
         
         return cell
     }
