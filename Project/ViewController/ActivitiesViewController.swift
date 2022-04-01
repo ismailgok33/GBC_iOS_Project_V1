@@ -68,7 +68,7 @@ extension ActivitiesViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.layer.shadowRadius = 2.0
         cell.layer.shadowOpacity = 1
-        cell.layer.masksToBounds = false //<-
+        cell.layer.masksToBounds = false
         
         return cell
     }
@@ -81,6 +81,8 @@ extension ActivitiesViewController: UICollectionViewDelegate, UICollectionViewDa
             print("DEBUG: Error while pushing activityDetailVC")
             return
         }
+        
+        activityDetailVC.activity = activities[indexPath.row]
         
         self.navigationController?.pushViewController(activityDetailVC, animated: true)
         
