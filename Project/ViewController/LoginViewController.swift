@@ -39,17 +39,15 @@ class LoginViewController: UIViewController {
         
         guard let email = emailText.text, let password = passwordText.text, !email.isEmpty, !password.isEmpty else {
             
-            // TODO: Show alert
-            print("DEBUG: Email and Password fields must be filled.")
-            
+            showErrorAlert(with: "Email and Password fields must be filled.")
+                        
             return
         }
         
         // TODO: Check the login credentials
         if !FakeDatabase.shared.checkIfUserExists(email: email, password: password) {
             
-            // TODO: Show alert
-            print("DEBUG: Show login error message here..")
+            showErrorAlert(with: "Wrong login credentials.")
             
             return
         }
@@ -68,6 +66,13 @@ class LoginViewController: UIViewController {
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarVC)
 
+    }
+    
+    private func showErrorAlert(with message: String) {
+        let alertMessage = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .destructive, handler: nil)
+        alertMessage.addAction(okAction)
+        self.present(alertMessage, animated: true, completion: nil)
     }
     
 
