@@ -14,6 +14,8 @@ class ActivitiesViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     var activities: [Activity] = []
+    
+    let defaults = UserDefaults.standard
 
     // MARK: - Lifecycle
     
@@ -24,6 +26,7 @@ class ActivitiesViewController: UIViewController {
         
         fetchAllActivities()
         
+        configureUI()
         configureCollectionView()
     }
     
@@ -44,8 +47,22 @@ class ActivitiesViewController: UIViewController {
 
     }
     
-    func fetchAllActivities() {
+    private func configureUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonTapped))
+    }
+    
+    private func fetchAllActivities() {
         self.activities = FakeDatabase.shared.getAllActivities()
+    }
+    
+    // MARK: - Selectors
+    
+    @objc private func logoutButtonTapped() {
+        defaults.set(false, forKey: "logged")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(identifier: "LoginVC")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginVC)
     }
 
 }

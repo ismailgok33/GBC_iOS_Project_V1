@@ -42,6 +42,14 @@ class ActivityDetailViewController: UIViewController {
     
     // MARK: - Selectors
     
+    @IBAction func websiteLinkTapped(_ sender: UIButton) {
+        guard let webViewVC = storyboard?.instantiateViewController(withIdentifier: "WebViewVC") as? WebViewViewController else {
+            print("DEBUG: Error while pushing webViewVC")
+            return
+        }
+                
+        self.navigationController?.pushViewController(webViewVC, animated: true)
+    }
     
 
 }
