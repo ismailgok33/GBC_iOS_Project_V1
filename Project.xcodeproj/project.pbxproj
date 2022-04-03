@@ -22,6 +22,7 @@
 		EC14F21727F522F600C2AF2A /* FakeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F21627F522F600C2AF2A /* FakeDatabase.swift */; };
 		EC14F21927F6DAEA00C2AF2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC14F21827F6DAE900C2AF2A /* User.swift */; };
 		EC96DAC427F81D0F00CE551B /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96DAC327F81D0F00CE551B /* WebViewViewController.swift */; };
+		ECB94E6B27F97A770036F3DF /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94E6A27F97A770036F3DF /* Purchase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		EC14F21627F522F600C2AF2A /* FakeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDatabase.swift; sourceTree = "<group>"; };
 		EC14F21827F6DAE900C2AF2A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EC96DAC327F81D0F00CE551B /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		ECB94E6A27F97A770036F3DF /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			children = (
 				EC14F21327F5224200C2AF2A /* Activity.swift */,
 				EC14F21827F6DAE900C2AF2A /* User.swift */,
+				ECB94E6A27F97A770036F3DF /* Purchase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				EC14F20E27F517CF00C2AF2A /* ActivityCollectionViewCell.swift in Sources */,
 				EC14F20827F4FC3B00C2AF2A /* PurchaseTicketViewController.swift in Sources */,
 				EC14F1EF27F3E73300C2AF2A /* AppDelegate.swift in Sources */,
+				ECB94E6B27F97A770036F3DF /* Purchase.swift in Sources */,
 				EC14F21427F5224200C2AF2A /* Activity.swift in Sources */,
 				EC14F21927F6DAEA00C2AF2A /* User.swift in Sources */,
 				EC14F1F127F3E73300C2AF2A /* SceneDelegate.swift in Sources */,

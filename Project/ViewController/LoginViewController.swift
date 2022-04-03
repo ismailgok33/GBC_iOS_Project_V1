@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  Project
-//
-//  Created by İsmail on 29.03.2022.
-//
 
 import UIKit
 
@@ -65,7 +59,10 @@ class LoginViewController: UIViewController {
         }
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarVC)
-
+        
+        // MARK: - KACHUN
+        defaults.set(email, forKey: "CURRENT_LOGIN_USER")
+        // KACHUN
     }
     
     private func showErrorAlert(with message: String) {
@@ -75,6 +72,5 @@ class LoginViewController: UIViewController {
         self.present(alertMessage, animated: true, completion: nil)
     }
     
-
 }
 

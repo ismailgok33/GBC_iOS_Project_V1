@@ -1,9 +1,3 @@
-//
-//  WebViewViewController.swift
-//  Project
-//
-//  Created by İsmail on 2.04.2022.
-//
 
 import UIKit
 import WebKit

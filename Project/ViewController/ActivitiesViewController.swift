@@ -1,9 +1,3 @@
-//
-//  ActivitiesViewController.swift
-//  Project
-//
-//  Created by İsmail on 30.03.2022.
-//
 
 import UIKit
 
@@ -28,6 +22,7 @@ class ActivitiesViewController: UIViewController {
         
         configureUI()
         configureCollectionView()
+        
     }
     
     // MARK: - Helpers
@@ -114,3 +109,4 @@ extension ActivitiesViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: (UIScreen.main.bounds.width / 2) - 20, height: (UIScreen.main.bounds.width / 2) - 20)
     }
 }
+

@@ -1,9 +1,3 @@
-//
-//  ActivityCollectionViewCell.swift
-//  Project
-//
-//  Created by İsmail on 30.03.2022.
-//
 
 import UIKit
 
@@ -27,7 +21,7 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     func configureUI(activity: Activity) {
         self.imageView.image = activity.photo
         self.name.text = activity.name
-        self.price.text = activity.price
+        self.price.text = "Price: $\(activity.price) / person"
     }
 
 }

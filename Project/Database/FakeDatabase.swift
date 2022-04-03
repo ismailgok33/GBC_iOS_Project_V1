@@ -1,9 +1,3 @@
-//
-//  FakeDatabase.swift
-//  Project
-//
-//  Created by İsmail on 30.03.2022.
-//
 
 import UIKit
 
@@ -16,16 +10,41 @@ class FakeDatabase {
     // MARK: - Properties
     
     private var activityList: [Activity] = [
-        Activity(name: "Tour of Eiffel Tower", price: "$52 / person", photo: UIImage(systemName: "book")!, detail: "test etstset set sets etset set set sets etse tset se", host: "Hosted by: Peter"),
-        Activity(name: "Riverboat Cruise", price: "$30 / person", photo: UIImage(systemName: "books.vertical")!, detail: "test etstset set sets etset set set sets etse tset se", host: "Hosted by: Peter"),
-        Activity(name: "Art at the Louvre", price: "$55 / person", photo: UIImage(systemName: "book.closed")!, detail: "test etstset set sets etset set set sets etse tset se", host: "Hosted by: Peter"),
-        Activity(name: "French Pastry Tour", price: "$100 / person", photo: UIImage(systemName: "character.book.closed")!, detail: "test etstset set sets etset set set sets etse tset se", host: "Hosted by: Peter"),
-        Activity(name: "Cabaret Show", price: "$85 / person", photo: UIImage(systemName: "bookmark")!, detail: "test etstset set sets etset set set sets etse tset se", host: "Hosted by: Peter")
+        Activity(name: "Tour of Eiffel Tower",
+                 price: 52,
+                 photo: UIImage(named: "Image1")!,
+                 detail: "test etstset set sets etset set set sets etse tset se",
+                 host: "Hosted by: Peter",
+                 urlString: "https://www.airbnb.ca/experiences/46255?guests=1&adults=1&s=67&unique_share_id=3d68fb0f-74cd-46d0-905d-7ea40fe9525b"),
+        Activity(name: "Riverboat Cruise",
+                 price: 30,
+                 photo: UIImage(named: "Image2")!,
+                 detail: "test etstset set sets etset set set sets etse tset se",
+                 host: "Hosted by: Peter",
+                 urlString: "https://www.airbnb.ca/experiences/46255?guests=1&adults=1&s=67&unique_share_id=3d68fb0f-74cd-46d0-905d-7ea40fe9525b"),
+        Activity(name: "Art at the Louvre",
+                 price: 55,
+                 photo: UIImage(named: "Image3")!,
+                 detail: "test etstset set sets etset set set sets etse tset se",
+                 host: "Hosted by: Peter",
+                 urlString: "https://www.airbnb.ca/experiences/46255?guests=1&adults=1&s=67&unique_share_id=3d68fb0f-74cd-46d0-905d-7ea40fe9525b"),
+        Activity(name: "French Pastry Tour",
+                 price: 100,
+                 photo: UIImage(named: "Image1")!,
+                 detail: "test etstset set sets etset set set sets etse tset se",
+                 host: "Hosted by: Peter",
+                 urlString: "https://www.airbnb.ca/experiences/46255?guests=1&adults=1&s=67&unique_share_id=3d68fb0f-74cd-46d0-905d-7ea40fe9525b"),
+        Activity(name: "Cabaret Show",
+                 price: 85,
+                 photo: UIImage(named: "Image2")!,
+                 detail: "test etstset set sets etset set set sets etse tset se",
+                 host: "Hosted by: Peter",
+                 urlString: "https://www.airbnb.ca/experiences/46255?guests=1&adults=1&s=67&unique_share_id=3d68fb0f-74cd-46d0-905d-7ea40fe9525b")
     ]
     
     private var userList: [User] = [
-        User(email: "test@test.com", password: "123456"),
-        User(email: "test2@test.com", password: "123456789")
+        User(email: "test", password: "123"),
+        User(email: "test2", password: "1234")
     ]
     
     // MARK: - Getters / Setters
@@ -33,6 +52,8 @@ class FakeDatabase {
     func getAllActivities() -> [Activity] {
         return activityList
     }
+    
+    // MARK: - Service Functions
     
     func checkIfUserExists(email: String, password: String) -> Bool {
         
@@ -54,5 +75,30 @@ class FakeDatabase {
         
         print("DEBUG: Successfully logged in..")
         return true
+    }
+    
+    func saveToDefault(defaults: UserDefaults, username: String, purchaseList: PurchaseList) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(purchaseList) {
+            defaults.set(encoded, forKey: username)
+        }
+    }
+
+    func getFromDefault(defaults: UserDefaults, username: String) -> PurchaseList {
+        if let savedList = defaults.object(forKey: username) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedPurchase = try? decoder.decode(PurchaseList.self, from: savedList) {
+                return loadedPurchase
+            }
+        }
+        return PurchaseList()
+    }
+    
+    func countTotal(list: [Purchase]) -> Double {
+        var sum: Double = 0
+        for purchase in list {
+            sum += purchase.price
+        }
+        return sum
     }
 }

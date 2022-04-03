@@ -1,9 +1,3 @@
-//
-//  User.swift
-//  Project
-//
-//  Created by İsmail on 1.04.2022.
-//
 
 import Foundation
 

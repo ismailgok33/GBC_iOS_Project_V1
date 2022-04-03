@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Project
-//
-//  Created by İsmail on 29.03.2022.
-//
 
 import UIKit
 
