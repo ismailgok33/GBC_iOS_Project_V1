@@ -95,6 +95,8 @@ class ActivityDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
             print("DEBUG: Error while pushing webViewVC")
             return
         }
+        
+        webViewVC.urlString = activity?.urlString ?? ""
                 
         self.navigationController?.pushViewController(webViewVC, animated: true)
     }
