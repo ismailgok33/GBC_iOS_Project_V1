@@ -10,39 +10,41 @@ class ActivityDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var hostLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
-    
-    // MARK: - KACHUN
-    let defaults = UserDefaults.standard
     @IBOutlet weak var pickerForDate: UIDatePicker!
     @IBOutlet weak var pickerForNum: UIPickerView!
+    
+    let defaults = UserDefaults.standard
     var pickerForNumData = ["1", "2", "3", "4", "5"]
     var CURRENT_USER: String? = nil
+    var activity: Activity? = nil
     
     @IBAction func btnPressed(_ sender: Any) {
         
         let date = pickerForDate.date
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        let str = formatter.string(from: date)
-        let selectedIndex = self.pickerForNum.selectedRow(inComponent: 0)
-        print(pickerForNumData[selectedIndex])
+        let dateText = formatter.string(from: date)
         
-        let totalPrice = Double((selectedIndex + 1)) * self.activity!.price
-        
-        let box = UIAlertController(title: "Total price: \(totalPrice)", message: "Do you confirm this purchase?", preferredStyle: .actionSheet)
-        box.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        box.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+        let quantity = 1 + self.pickerForNum.selectedRow(inComponent: 0)
+        let totalPrice = String(format: "%.2f", Double(quantity) * self.activity!.price)
+        let box = UIAlertController(title: "Total price: $\(totalPrice)", message: "Do you confirm this purchase?", preferredStyle: .actionSheet)
+        box.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        box.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {
             action in
-            // add to purchase list
-            let newPurchase = Purchase(name: self.activity!.name, quantity: selectedIndex+1, dateOfVisit: str, pricePerHead: self.activity!.price)
             
-            var purchaseList = FakeDatabase.shared.getFromDefault(defaults: self.defaults, username: self.CURRENT_USER!)
+            let newPurchase = Purchase(name: self.activity!.name, quantity: quantity, dateOfVisit: dateText, pricePerHead: self.activity!.price)
+            
+            //update purchaseList in userDefault
+            var purchaseList = FakeDatabase.shared.getFromDefault(self.defaults, self.CURRENT_USER!)
             purchaseList.list.append(newPurchase)
-            FakeDatabase.shared.saveToDefault(defaults: self.defaults, username: self.CURRENT_USER!, purchaseList: purchaseList)
+            FakeDatabase.shared.saveToDefault(self.defaults, self.CURRENT_USER!, purchaseList)
             
+            // notice for a purchase made
+            let notice = UIAlertController(title: "Done!", message: "Your purchase has been added.", preferredStyle: .actionSheet)
+            notice.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(notice, animated: true)
         }))
         self.present(box, animated: true)
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -57,9 +59,6 @@ class ActivityDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
         return pickerForNumData[row]
     }
     
-    var activity: Activity? = nil
-    //KACHUN
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -71,6 +70,8 @@ class ActivityDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
     // MARK: - Helpers
     
     private func configureUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonTapped))
+        
         if let activity = activity {
             nameLabel.text = activity.name
             imageView.image = activity.photo
@@ -78,12 +79,11 @@ class ActivityDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
             hostLabel.text = activity.host
             priceLabel.text = "Price per person: $\(activity.price)"
             
-            // MARK: - KACHUN
             self.pickerForNum.delegate = self
             self.pickerForNum.dataSource = self
-            pickerForDate.minimumDate = Date()
+            let nextDayOfToday = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+            pickerForDate.minimumDate = nextDayOfToday
             self.CURRENT_USER = defaults.string(forKey: "CURRENT_LOGIN_USER")
-            //KACHUN
         }
     }
     
@@ -99,6 +99,14 @@ class ActivityDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
         webViewVC.urlString = activity?.urlString ?? ""
                 
         self.navigationController?.pushViewController(webViewVC, animated: true)
+    }
+    
+    @objc private func logoutButtonTapped() {
+        defaults.set(false, forKey: "logged")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(identifier: "LoginVC")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginVC)
     }
     
 }

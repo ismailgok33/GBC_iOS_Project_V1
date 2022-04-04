@@ -16,15 +16,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if defaults.bool(forKey: "logged") {
-//            guard let tabBarVC = storyboard?.instantiateViewController(withIdentifier: "tabBarController") else {
-//                print("DEBUG: Error while pushing tabBarController")
-//                return
-//            }
-//
-//            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarVC)
-//        }
     }
     
     // MARK: - Selectors
@@ -38,7 +29,6 @@ class LoginViewController: UIViewController {
             return
         }
         
-        // TODO: Check the login credentials
         if !FakeDatabase.shared.checkIfUserExists(email: email, password: password) {
             
             showErrorAlert(with: "Wrong login credentials.")
@@ -60,9 +50,7 @@ class LoginViewController: UIViewController {
         
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarVC)
         
-        // MARK: - KACHUN
         defaults.set(email, forKey: "CURRENT_LOGIN_USER")
-        // KACHUN
     }
     
     private func showErrorAlert(with message: String) {

@@ -22,6 +22,7 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         self.imageView.image = activity.photo
         self.name.text = activity.name
         self.price.text = "Price: $\(activity.price) / person"
+        backgroundColor = activity.isPopular ? .systemYellow : .white
     }
 
 }
